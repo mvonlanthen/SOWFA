@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     #include "createMesh.H"
     #include "readGravitationalAcceleration.H"
     #include "createFields.H"
-    #include "createDivSchemeBlendingField.H"
+//     #include "createDivSchemeBlendingField.H"
     #include "createGradP.H"
     #include "readTimeControls.H"
     #include "CourantNo.H"
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
         #include "readTimeControls.H"
         #include "CourantNo.H"
         #include "setDeltaT.H"
-        #include "updateDivSchemeBlendingField.H"
+//         #include "updateDivSchemeBlendingField.H"
 
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
