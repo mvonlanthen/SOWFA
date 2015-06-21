@@ -53,6 +53,7 @@ Description
 #include "IFstream.H"
 #include "OFstream.H"
 #include "wallDist.H"
+#include "interpolateSplineXY.H"
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

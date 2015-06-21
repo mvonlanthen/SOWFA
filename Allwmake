@@ -60,39 +60,39 @@ ln -s $dir/ABLTerrainSolver.C ./
 wmake
 cd ../../../../../
 
-cd applications/solvers/incompressible/windEnergy/windPlantSolver
-rm pEqn.H
-rm windPlantSolver.C
-ln -s $dir/pEqn.H ./
-ln -s $dir/windPlantSolver.C ./
-wmake
-cd ../../../../../
-
-cd applications/solvers/incompressible/windEnergy/pisoFoamTurbine
-rm pisoFoamTurbine.C
-ln -s $dir/pisoFoamTurbine.C
-wmake
-cd ../../../../../
-
-cd applications/solvers/incompressible/windEnergy/pisoFoamTurbine.ADM
-rm pisoFoamTurbine.C
-ln -s $dir/pisoFoamTurbine.C
-wmake
-cd ../../../../../
-
-cd applications/solvers/incompressible/windEnergy/turbineTestHarness
-wmake
-cd ../../../../../
-
-cd src/openfast/bin
-make
-./libmake
-cd ../../../
-
-cd src/fastturb
-wmake libso
-cd ../../
-
-cd applications/solvers/incompressible/windEnergy/windPlantSolverFAST
-wmake
-cd ../../../../../
+# cd applications/solvers/incompressible/windEnergy/windPlantSolver
+# rm pEqn.H
+# rm windPlantSolver.C
+# ln -s $dir/pEqn.H ./
+# ln -s $dir/windPlantSolver.C ./
+# wmake
+# cd ../../../../../
+# 
+# cd applications/solvers/incompressible/windEnergy/pisoFoamTurbine
+# rm pisoFoamTurbine.C
+# ln -s $dir/pisoFoamTurbine.C
+# wmake
+# cd ../../../../../
+# 
+# cd applications/solvers/incompressible/windEnergy/pisoFoamTurbine.ADM
+# rm pisoFoamTurbine.C
+# ln -s $dir/pisoFoamTurbine.C
+# wmake
+# cd ../../../../../
+# 
+# cd applications/solvers/incompressible/windEnergy/turbineTestHarness
+# wmake
+# cd ../../../../../
+# 
+# cd src/openfast/bin
+# make
+# ./libmake
+# cd ../../../
+# 
+# cd src/fastturb
+# wmake libso
+# cd ../../
+# 
+# cd applications/solvers/incompressible/windEnergy/windPlantSolverFAST
+# wmake
+# cd ../../../../../

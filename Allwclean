@@ -31,32 +31,32 @@ rmdepall
 wclean
 cd ../../../../../
 
-cd applications/solvers/incompressible/windEnergy/windPlantSolver
-rmdepall
-wclean
-cd ../../../../../
-
-cd applications/solvers/incompressible/windEnergy/pisoFoamTurbine
-rmdepall
-wclean
-cd ../../../../../
-
-cd applications/solvers/incompressible/windEnergy/pisoFoamTurbine.ADM
-rmdepall
-wclean
-cd ../../../../../
-
-cd applications/solvers/incompressible/windEnergy/turbineTestHarness
-rmdepall
-wclean
-cd ../../../../../
-
-cd src/fastturb
-rmdepall
-wclean
-cd ../../
-
-cd applications/solvers/incompressible/windEnergy/windPlantSolverFAST
-rmdepall
-wclean
-cd ../../../../../
+# cd applications/solvers/incompressible/windEnergy/windPlantSolver
+# rmdepall
+# wclean
+# cd ../../../../../
+# 
+# cd applications/solvers/incompressible/windEnergy/pisoFoamTurbine
+# rmdepall
+# wclean
+# cd ../../../../../
+# 
+# cd applications/solvers/incompressible/windEnergy/pisoFoamTurbine.ADM
+# rmdepall
+# wclean
+# cd ../../../../../
+# 
+# cd applications/solvers/incompressible/windEnergy/turbineTestHarness
+# rmdepall
+# wclean
+# cd ../../../../../
+# 
+# cd src/fastturb
+# rmdepall
+# wclean
+# cd ../../
+# 
+# cd applications/solvers/incompressible/windEnergy/windPlantSolverFAST
+# rmdepall
+# wclean
+# cd ../../../../../
