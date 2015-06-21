@@ -1,0 +1,14 @@
+*~
+*.dep
+linux64GccDPOpt/
+linux64GccDPDebug/
+*.cproject
+*.project
+*.config
+*.creator
+*.creator.user
+*.files
+*.includes
+*.autotools
+lnInclude_all.xml
+lnInclude/
