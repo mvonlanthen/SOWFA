@@ -59,35 +59,6 @@
         U
     );
 
-//    Info << "Creating time-average vorticity field, omegaAvg..." << endl;
-//    volVectorField omegaAvg
-//    (
-//        IOobject
-//        (
-//            "omegaAvg",
-//            runTime.timeName(),
-//            mesh,
-//            IOobject::READ_IF_PRESENT,
-//            IOobject::AUTO_WRITE
-//        ),
-//        mesh,
-//        dimensionedVector("omegaAvg",dimensionSet(0, 0, -1, 0, 0, 0, 0),vector::zero)
-//    );
-
-    Info << "Creating time-averaged pressure field, p_rghAvg..." << endl;
-    volScalarField p_rghAvg
-    (
-        IOobject
-        (
-            "p_rghAvg",
-            runTime.timeName(),
-            mesh,
-            IOobject::READ_IF_PRESENT,
-            IOobject::AUTO_WRITE
-        ),
-        mesh,
-        dimensionedScalar("p_rghAvg",dimensionSet(0, 2, -2, 0, 0, 0, 0),0.0)
-    );
 
     // Create and read in initial RMS velocity field.
     Info << "Creating RMS velocity field, uRMS..." << endl;
@@ -231,22 +202,6 @@
         mesh,
         dimensionedScalar("kSGS",dimensionSet(0, 2, -2, 0, 0, 0, 0),0.0)
     );
-
-  //  Info<< "Creating SGS viscosity field, nuSGS..." << endl;
-  //  volScalarField nuSGS
-  //  (
-  //      IOobject
-  //      (
-  //          "nuSGS",
-  //          runTime.timeName(),
-  //          mesh,
-  //          IOobject::READ_IF_PRESENT,
-  //          IOobject::AUTO_WRITE
-  //      ),
-  //      mesh,
-  //      dimensionedScalar("nuSGS",dimensionSet(0, 2, -1, 0, 0, 0, 0),0.0)
-  //  );
-
 
     // Create the resolved-scale tke field.
     Info<< "Creating the resolved scale turbulent kinetic energy field, kResolved..." << endl;

@@ -53,25 +53,12 @@
         uTPrime2 = uTPrime2 / corrTimeSum;
         TTPrime2 = TTPrime2 / corrTimeSum;
 
-        // for loop are time consuming.
-//        forAll(uRMS,cellI)
-//        {
-//            uRMS[cellI].x() = Foam::sqrt(uuPrime2[cellI].xx());
-//            uRMS[cellI].y() = Foam::sqrt(uuPrime2[cellI].yy());
-//            uRMS[cellI].z() = Foam::sqrt(uuPrime2[cellI].zz());
-//        }
-        // use vetoriel computing instead
+        // for loop are time consuming. Use vetoriel computing instead
         uRMS.component(0) = Foam::sqrt(uuPrime2.component(0));
         uRMS.component(1) = Foam::sqrt(uuPrime2.component(3));
         uRMS.component(2) = Foam::sqrt(uuPrime2.component(5));
-
         TRMS = Foam::sqrt(TTPrime2);
 
-        // same here
-//        forAll(kResolved,cellI)
-//        {
-//            kResolved[cellI] = 0.5 * (uuPrime2[cellI].xx() + uuPrime2[cellI].yy() + uuPrime2[cellI].zz());
-//        }
         kResolved = 0.5 * (uuPrime2.component(0) + uuPrime2.component(3) + uuPrime2.component(5));
     }
 }
