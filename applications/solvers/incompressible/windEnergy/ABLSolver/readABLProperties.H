@@ -105,6 +105,15 @@
        Omega_.x() = 0.0;
        Omega_.y() = ((2.0 * Foam::constant::mathematical::pi) / (max(1.0E-5,planetaryRotationPeriod)*3600.0)) * Foam::cos(latitude*Foam::constant::mathematical::pi/180.0);
        Omega_.z() = ((2.0 * Foam::constant::mathematical::pi) / (max(1.0E-5,planetaryRotationPeriod)*3600.0)) * Foam::sin(latitude*Foam::constant::mathematical::pi/180.0);
+
+       // deactivate the coriolis force if needed.
+       bool deactivateCoriolis(ABLProperties.lookupOrDefault<bool>("deactivateCoriolis",false));
+
+       if (deactivateCoriolis==true)
+       {
+           Omega_ = vector::zero;
+       }
+
        uniformDimensionedVectorField Omega
        (
            IOobject
@@ -126,10 +135,10 @@
     // PROPERTIES CONCERNING GATHERING STATISTICS
 
        // Gather/write statistics?
-       bool statisticsOn(ABLProperties.lookupOrDefault<bool>("statisticsOn", false));
+//       bool statisticsOn(ABLProperties.lookupOrDefault<bool>("statisticsOn", false));
 
        // Statistics gathering/writing frequency?
-       int statisticsFreq(int(readScalar(ABLProperties.lookup("statisticsFrequency"))));
+//       int statisticsFreq(int(readScalar(ABLProperties.lookup("statisticsFrequency"))));
 
 
 
