@@ -46,6 +46,7 @@ SchumannGrotzbachFvPatchField
 )
 :
     fixedValueFvPatchSymmTensorField(p, iF),
+    print_(true),
     kappa_(0.40),
     z0_(p.size(), 0.01),
     betaM_(15.0),
@@ -64,6 +65,7 @@ SchumannGrotzbachFvPatchField
 )
 :
     fixedValueFvPatchSymmTensorField(ptf, p, iF, mapper),
+    print_(ptf.print_),
     kappa_(ptf.kappa_),
     z0_(ptf.z0_, mapper),
     betaM_(ptf.betaM_),
@@ -81,6 +83,7 @@ SchumannGrotzbachFvPatchField
 )
 :
     fixedValueFvPatchSymmTensorField(p, iF, dict),
+    print_(dict.lookupOrDefault<bool>("print",true)),
     kappa_(readScalar(dict.lookup("kappa"))),
     z0_("z0", dict, p.size()),
     betaM_(readScalar(dict.lookup("betaM"))),
@@ -96,6 +99,7 @@ SchumannGrotzbachFvPatchField
 )
 :
     fixedValueFvPatchSymmTensorField(wfpf),
+    print_(wfpf.print_),
     kappa_(wfpf.kappa_),
     z0_(wfpf.z0_),
     betaM_(wfpf.betaM_),
@@ -112,6 +116,7 @@ SchumannGrotzbachFvPatchField
 )
 :
     fixedValueFvPatchSymmTensorField(wfpf, iF),
+    print_(wfpf.print_),
     kappa_(wfpf.kappa_),
     z0_(wfpf.z0_),
     betaM_(wfpf.betaM_),
@@ -304,15 +309,15 @@ void SchumannGrotzbachFvPatchField::evaluate
     scalar uStarMean = gSum(uStar * area) / areaTotal;
     scalar LMean = gSum(L * area) / areaTotal;
     scalar phiMMean = gSum(phiM * area) / areaTotal;
-    Info << "uStarMean = " << uStarMean << tab
-         << "LMean = " << LMean << tab
-         << "phiMMean = " << phiMMean << endl;
-    Info << "UParallelMeanMag = " << UParallelMeanMag << tab
-         << "UParallelPMeanMag = " << UParallelPMeanMag << endl;
 
-
-
-
+    if (print_==true)
+    {
+        Info << "uStarMean = " << uStarMean << tab
+             << "LMean = " << LMean << tab
+             << "phiMMean = " << phiMMean << endl;
+        Info << "UParallelMeanMag = " << UParallelMeanMag << tab
+             << "UParallelPMeanMag = " << UParallelPMeanMag << endl;
+    }
 
 
     // ---Specify surface shear stresses (Schumann formulation)
@@ -410,11 +415,14 @@ void SchumannGrotzbachFvPatchField::evaluate
     scalar RwMeanMag = Foam::sqrt(Foam::sqr(RwMean.xz()) + Foam::sqr(RwMean.yz()));
     scalar RwMagMean = gSum(RwMag * area) / areaTotal;
 
-    Info << "RwMagMean = " << RwMagMean << tab
-         << "RwMeanMag = " << RwMeanMag << tab
-         << "sqrt(RwMagMean) = " << Foam::sqrt(RwMagMean) << tab
-         << "sqrt(RwMeanMag) = " << Foam::sqrt(RwMeanMag) << tab
-         << "uStarMean = " << uStarMean << endl;
+    if (print_==true)
+    {
+        Info << "RwMagMean = " << RwMagMean << tab
+             << "RwMeanMag = " << RwMeanMag << tab
+             << "sqrt(RwMagMean) = " << Foam::sqrt(RwMagMean) << tab
+             << "sqrt(RwMeanMag) = " << Foam::sqrt(RwMeanMag) << tab
+             << "uStarMean = " << uStarMean << endl;
+    }
 }
 
 vector SchumannGrotzbachFvPatchField::transformVectorCartToLocal
@@ -807,6 +815,7 @@ void  SchumannGrotzbachFvPatchField::uStarEvaluate
 void SchumannGrotzbachFvPatchField::write(Ostream& os) const
 {
     fvPatchField<symmTensor>::write(os);
+    os.writeKeyword("print") << print_ << token::END_STATEMENT << nl;
     os.writeKeyword("kappa") << kappa_ << token::END_STATEMENT << nl;
     z0_.writeEntry("z0", os);
     os.writeKeyword("betaM") << betaM_ << token::END_STATEMENT << nl;

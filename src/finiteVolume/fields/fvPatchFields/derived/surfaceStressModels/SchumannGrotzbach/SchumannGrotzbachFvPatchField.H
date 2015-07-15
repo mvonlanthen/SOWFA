@@ -58,6 +58,10 @@ private:
 
     // Private data
 
+
+        //- print the output
+        bool print_;
+
         //- Von Karman constant
         scalar kappa_;
 
