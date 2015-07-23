@@ -196,6 +196,11 @@ public:
 
     // Member functions
 
+        // parallel functions (defined in every boundary condition of OpenFOAM)
+        virtual void autoMap(const fvPatchFieldMapper&);
+
+        virtual void rmap(const fvPatchField<symmTensor>&, const labelList&);
+
         // Access functions
             //- Return z_0
             scalarField& z0()

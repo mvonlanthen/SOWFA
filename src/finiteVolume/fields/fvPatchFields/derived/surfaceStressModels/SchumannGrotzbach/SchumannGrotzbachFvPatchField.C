@@ -825,6 +825,22 @@ void SchumannGrotzbachFvPatchField::write(Ostream& os) const
 }
 
 
+void SchumannGrotzbachFvPatchField::autoMap(const fvPatchFieldMapper& m)
+{
+    Field<symmTensor>::autoMap(m);
+    z0_.autoMap(m);
+
+}
+
+void SchumannGrotzbachFvPatchField::rmap(const fvPatchField<symmTensor>& ptf, const labelList& addr)
+{
+    fixedValueFvPatchField<symmTensor>::rmap(ptf, addr);
+
+    const SchumannGrotzbachFvPatchField& tiptf = refCast<const SchumannGrotzbachFvPatchField>(ptf);
+    z0_.rmap(tiptf.z0_, addr);
+
+}
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 makePatchTypeField
