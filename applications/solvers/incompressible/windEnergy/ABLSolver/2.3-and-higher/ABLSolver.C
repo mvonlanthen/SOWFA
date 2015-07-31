@@ -66,17 +66,12 @@ int main(int argc, char *argv[])
     #include "createPostProcessingDir.H"
     #include "readGravitationalAcceleration.H"
     #include "createFields.H"
-//    #include "createAverageFields.H"
     #include "createGradP.H"
     #include "readTimeControls.H"
     #include "CourantNo.H"
     #include "setInitialDeltaT.H"
     #include "findVerticalCellLevels.H"
     #include "findWindHeight.H"
-//    #include "openCellStatisticsFiles.H"
-//    #include "computeDivergence.H"
-//     #include "createDivSchemeBlendingField.H"
-//    #include "openABLStatisticsFiles.H"
 
     pimpleControl pimple(mesh);
 
@@ -88,10 +83,8 @@ int main(int argc, char *argv[])
     // updating, for example after using mapFields to interpolate initial
     // field.
     U.correctBoundaryConditions();
-//    phi = linearInterpolate(U) & mesh.Sf();
     #include "turbulenceCorrect.H"
     T.correctBoundaryConditions();
-  //p_rgh.correctBoundaryConditions();
 
     while (runTime.loop())
     {
@@ -101,7 +94,6 @@ int main(int argc, char *argv[])
         #include "readTimeControls.H"
         #include "CourantNo.H"
         #include "setDeltaT.H"
-//         #include "updateDivSchemeBlendingField.H"
 
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
@@ -135,16 +127,8 @@ int main(int argc, char *argv[])
 //          }
         }   
 
-//        if (runTime.outputTime())
-//        {
-//            #include "averageFields.H"
-//        }
-
-//        #include "statisticsCell.H"
-//      #include "statisticsFace.H"
-//      #include "statisticsABL.H"
-
         runTime.write();
+
         #include "writeGradP.H"
 
         Info << "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
